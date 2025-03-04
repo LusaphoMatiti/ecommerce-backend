@@ -1,30 +1,18 @@
-// server.mjs
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import "dotenv/config";
 import productRoutes from "./routes/productRoutes.js";
 
 dotenv.config(); // Load environment variables from .env
 
 const app = express();
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5000;
 
 // Middleware
-const allowedOrigins = [
-  "https://ecommerce-frontend-lake-nu.vercel.app",
-  "http://ecommerce-frontend-lusapho.s3-website.eu-north-1.amazonaws.com",
-];
-
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    origin:
+      "https://ecommerce-frontend-11ilzllyc-lusaphomatitis-projects.vercel.app",
     credentials: true,
   })
 );
