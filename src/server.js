@@ -1,3 +1,4 @@
+// server.mjs
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -12,8 +13,8 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(
   cors({
-    origin: "http://localhost:5174", // Replace with your frontend URL
-    credentials: true, // Allow cookies (if needed)
+    origin: ["*"],
+    credentials: true, // Allow cookies if needed
   })
 );
 app.use(express.json());
