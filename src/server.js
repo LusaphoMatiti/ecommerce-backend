@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(
   cors({
-    origin: ["*"],
+    origin: "*",
     credentials: true, // Allow cookies if needed
   })
 );
