@@ -15,8 +15,8 @@ app.use(
   cors({
     origin: (origin, callback) => {
       const allowedOrigins = [
-        "*",
         "https://ecommerce-frontend-lake-nu.vercel.app",
+        "*",
       ];
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
