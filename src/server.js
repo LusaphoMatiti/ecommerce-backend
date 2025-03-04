@@ -8,16 +8,17 @@ import productRoutes from "./routes/productRoutes.js";
 dotenv.config(); // Load environment variables from .env
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 // Middleware
+const allowedOrigins = [
+  "https://ecommerce-frontend-lake-nu.vercel.app",
+  "http://ecommerce-frontend-lusapho.s3-website.eu-north-1.amazonaws.com",
+];
+
 app.use(
   cors({
     origin: (origin, callback) => {
-      const allowedOrigins = [
-        "https://ecommerce-frontend-lake-nu.vercel.app",
-        "*",
-      ];
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {

@@ -4,8 +4,12 @@ import { uploadToS3 } from "../utils/uploadToS3.js";
 
 // Get all products
 export const getProducts = (req, res) => {
+  console.log("Fetching all products...");
   db.query("SELECT * FROM products", (err, results) => {
-    if (err) return res.status(500).send(err);
+    if (err) {
+      console.error("Database error:", err);
+      return res.status(500).send(err);
+    }
     res.json(results);
   });
 };
