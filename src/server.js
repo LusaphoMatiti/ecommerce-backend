@@ -1,19 +1,12 @@
 import express from "express";
 import cors from "cors";
-
 import productRoutes from "./routes/productRoutes.js";
 
 const app = express();
 const PORT = process.env.PORT || 5001;
 
 // Middleware
-app.use(
-  cors({
-    origin:
-      "https://ecommerce-frontend-11ilzllyc-lusaphomatitis-projects.vercel.app",
-    credentials: true,
-  })
-);
+app.use(cors());
 app.use(express.json());
 
 // Routes
