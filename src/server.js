@@ -16,7 +16,7 @@ app.use(
     origin: (origin, callback) => {
       const allowedOrigins = [
         "*",
-        "https://ecommerce-frontend-3c1yjqjrn-lusaphomatitis-projects.vercel.app",
+        "https://ecommerce-frontend-lake-nu.vercel.app",
       ];
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
