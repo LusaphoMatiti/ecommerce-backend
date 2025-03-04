@@ -13,7 +13,10 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(
   cors({
-    origin: "*",
+    origin: [
+      "*", // For local development
+      "https://ecommerce-frontend-3c1yjqjrn-lusaphomatitis-projects.vercel.app", // Deployed frontend URL
+    ],
     credentials: true, // Allow cookies if needed
   })
 );
