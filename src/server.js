@@ -15,7 +15,7 @@ app.use(
   cors({
     origin: [
       "*", // For local development
-      "https://ecommerce-frontend-3c1yjqjrn-lusaphomatitis-projects.vercel.app", // Deployed frontend URL
+      "https://ecommerce-frontend-lake-nu.vercel.app/", // Deployed frontend URL
     ],
     credentials: true, // Allow cookies if needed
   })
