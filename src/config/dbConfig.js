@@ -1,7 +1,18 @@
 import mysql from "mysql2";
 import dotenv from "dotenv";
 
-dotenv.config(); // Load environment variables from .env
+dotenv.config();
+
+// Check if required environment variables are set
+if (
+  !process.env.DB_HOST ||
+  !process.env.DB_USER ||
+  !process.env.DB_PASSWORD ||
+  !process.env.DB_NAME
+) {
+  console.error("Database configuration is incomplete.");
+  process.exit(1);
+}
 
 // Create a MySQL connection
 const db = mysql.createConnection({
@@ -12,7 +23,10 @@ const db = mysql.createConnection({
 });
 
 db.connect((err) => {
-  if (err) throw err;
+  if (err) {
+    console.error("Failed to connect to the database:", err);
+    process.exit(1);
+  }
   console.log("Connected to the database");
 });
 

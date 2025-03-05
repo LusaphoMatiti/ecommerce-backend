@@ -17,7 +17,11 @@ app.get("/", (req, res) => {
   res.send("Ecommerce Backend is running!");
 });
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// Start the server only in development mode
+if (process.env.NODE_ENV !== "production") {
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}
+
+export default app; // Export the app for Vercel
