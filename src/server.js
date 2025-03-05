@@ -1,4 +1,7 @@
-console.log("Initializing server...");
+import express from "express";
+import cors from "cors";
+import productRoutes from "./routes/productRoutes.js";
+
 const app = express();
 
 // Middleware
@@ -10,16 +13,13 @@ app.use("/api/products", productRoutes);
 
 // Test route
 app.get("/", (req, res) => {
-  console.log("Handling root route (/)");
   res.status(200).send("Ecommerce Backend is running!");
 });
 
-// Start the server only in development mode
-if (process.env.NODE_ENV !== "production") {
-  const PORT = process.env.PORT || 5000;
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-  });
-}
+// Fallback route for unmatched paths
+app.all("*", (req, res) => {
+  res.status(404).send("Route not found");
+});
 
-export default app; // Export the app for Vercel
+// Export the app for Vercel
+export default app;
