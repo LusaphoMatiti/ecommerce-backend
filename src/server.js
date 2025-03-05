@@ -3,6 +3,7 @@ import cors from "cors";
 import productRoutes from "./routes/productRoutes.js";
 
 const app = express();
+const PORT = process.env.PORT || 5001;
 
 // Middleware
 app.use(cors());
@@ -13,13 +14,10 @@ app.use("/api/products", productRoutes);
 
 // Test route
 app.get("/", (req, res) => {
-  res.status(200).send("Ecommerce Backend is running!");
+  res.send("Ecommerce Backend is running!");
 });
 
-// Fallback route for unmatched paths
-app.all("*", (req, res) => {
-  res.status(404).send("Route not found");
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
-
-// Export the app for Vercel
-export default app;
